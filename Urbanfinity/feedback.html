@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urbanfinity | Feedback</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container">
+        <a href="index.html" class="logo-link">
+          <img src="Urbanfinity Logo.png" alt="Urbanfinity Logo" class="logo-img" />
+          <span class="logo-text">URBANFINITY</span>
+        </a>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="issues.html">Issues</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>The Community Space</h1>
+    <p>Share your thoughts, propose solutions, or explore helpful tools for urban living in Dehiwela.</p>
+  </section>
+
+<section id="app" class="highlights">
+  <div class="highlight">
+    <div class="text">
+      <h2>Community Feedback Forum</h2>
+      <p>Post your ideas, concerns, or suggestions. Let’s make Dehiwela smarter together!</p>
+
+      <form @submit.prevent="addComment" class="feedback-form">
+        <input v-model="newName" placeholder="Your Name" required />
+        <textarea v-model="newComment" placeholder="Write your feedback..." required></textarea>
+        <button type="submit">Post Feedback</button>
+      </form>
+
+      <div v-if="comments.length">
+        <div v-for="comment in comments" :key="comment.id" class="comment">
+          <h4>{{ comment.name }}</h4>
+          <p>{{ comment.text }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="highlight">
+    <div class="text">
+      <h2>Pollution Footprint Estimator</h2>
+      <p>Estimate your plastic waste and get a helpful tip.</p>
+
+      <div class="input-button-group">
+        <input v-model.number="plasticPerWeek" type="number" placeholder="Plastic items per week" />
+        <button @click="estimatePollution">Calculate</button>
+      </div>
+
+      <div v-if="annualPlastic !== null">
+        <p><strong>Estimated yearly plastic:</strong> {{ annualPlastic }} items</p>
+        <p>{{ plasticTip }}</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+  <footer>
+    <div class="social-icons">
+      <img src="MESSAGE.png" alt="Message" class="social-icon" />
+      <img src="INSTAGRAM.png" alt="Instagram" class="social-icon" />
+      <img src="X.png" alt="X" class="social-icon" />
+      <img src="YOUTUBE.png" alt="YouTube" class="social-icon" />
+      <img src="WHATSAPP.png" alt="WhatsApp" class="social-icon" />
+    </div>
+    <p>© All Rights Reserved. Designed by Hasna Marikkar.</p>
+  </footer>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
